@@ -1,0 +1,33 @@
+.new-task {
+  float: right;
+  margin-top: -40px;
+  border: thin solid #eee; 
+}
+.new-task input {
+  box-sizing: border-box;
+  padding: 0 10px;
+  background: transparent;
+  border: none;
+  font-size: 1em;
+  border-right: thin solid #eee;
+  border-left: thin solid #eee;  
+}
+.new-task input:focus{
+  outline: 0;
+}
+.new-task label{
+  	padding-top: 7px;
+}
+.new-task button{
+	margin-left: -31px;
+}
+.item {  
+  display: block;
+  background-color: #f8f8f8;
+  border: 1px solid #aaa;
+  cursor: move;
+}
+.panel-default > .panel-heading{
+	background-color: #337ab7;
+	color:white;
+}

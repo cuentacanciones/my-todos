@@ -1,0 +1,205 @@
+<head>
+    <title>TO-DO App</title>
+</head>
+<body>
+    {{> nav}}
+    {{#unless currentUser}}
+        {{> carousel}}
+    {{/unless}}
+    <div class="container">    	
+        <div id="main" class="container-fluid">
+            {{#unless currentUser}}
+                {{> yield}}
+            {{/unless}}
+            {{#if currentUser}}
+            <h1>Task</h1>
+            {{> addTask}}
+            <br /><br />
+            <ul class="list-group col-md-3 col-xs-6" id="items">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">To Do</h4>
+                </a>
+                {{#each tasks}}
+                    {{> task}}
+                {{/each}}
+            </ul>
+            <ul class="list-group col-md-3 col-xs-6">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">In Progress</h4>
+                </a>
+            </ul>
+            <ul class="list-group col-md-2 col-xs-6">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">QA</h4>
+                </a>
+            </ul>
+            <ul class="list-group col-md-2 col-xs-6">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">AT</h4>
+                </a>
+            </ul>
+            <ul class="list-group col-md-2 col-xs-6">
+                <a href="#" class="list-group-item active">
+                    <h4 class="list-group-item-heading">Done</h4>
+                </a>
+            </ul>
+            {{/if}}
+        </div>
+    </div>
+</body>
+
+<template name="task">
+    <li class="list-group-item item">  
+        <span class="text">{{text}}</span>
+    </li>
+</template>
+
+<template name="nav">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">TO-DO APP</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    {{> loginButtons}}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+</template>
+
+<template name="layout">
+    {{> header}}    
+    <div class="container">		
+        <div id="main" class="container-fluid">
+            {{#unless currentUser}}
+            <h1>Sign in and try this great App!</h1>
+                {{> yield}}
+            {{/unless}}
+            {{#if currentUser}}
+            <h1>Manage your task</h1>
+            {{> addTask}}		
+            <ul class="list-group">
+                {{#each tasks}}
+                {{> task}}
+                {{/each}}
+            </ul>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
+<template name="yield">
+     <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    TO-DO APP 
+                </h1>
+                <h3>
+                    Sign in and try this great App!
+                </h3>
+                <br />
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i>Why should you use it?</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>The Google Play Store and its plethora of options can be overwhelming for anyone. So instead of blindly downloading a crazy number of apps, let's concentrate on this essential app</p>
+                        <a href="#" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-check"></i>Finishing projects was never easy</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>I have a starting problem. And I'm really good at it. I can start so many things, that you'll loose track of them. In fact, I can start so many thing that I'll loose track of them, but now, I finally can finish everything with this App help</p>
+                        <a href="#" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <hr>
+        {{> footer}}
+</template>
+
+<template name="footer"> 
+    <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; TO-DO APP 2016</p>
+                </div>
+            </div>
+        </footer>
+</template>
+
+<template name="addTask"> 
+    <form class="new-task form-inline">
+        <div class="form-group">
+            <label for="taskform" class="col-sm-2 control-label">New</label>
+            <div class="col-sm-10">
+                <input type="text" name="text" class="form-control" id="taskform" placeholder="Type to add new tasks">
+            </div>
+        </div>  
+        <button type="submit" class="btn btn-default"> + </button>
+    </form>
+</template>
+
+<template name="carousel"> 
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="fill" style="background-image:url('http://www.limekast.com/img/sider-21.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Lightweight</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://www.identitat.com/wp-content/uploads/2014/05/windriders.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Portable</h2>
+                </div>
+            </div>
+            <div class="item">
+                <div class="fill" style="background-image:url('http://marketingland.com/wp-content/ml-loads/2014/12/mobile-apps-pile-ss-1920.jpg');"></div>
+                <div class="carousel-caption">
+                    <h2>Compatible</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </header>
+</template>
