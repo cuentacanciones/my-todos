@@ -20,5 +20,5 @@ insecure                # Allow all DB writes from clients (for prototyping)
 ian:accounts-ui-bootstrap-3
 accounts-password
 mizzao:bootstrap-3
-underscore
 mrt:jquery-ui
+dbernhard:jquery-ui-draggable

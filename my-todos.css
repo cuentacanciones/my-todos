@@ -33,3 +33,17 @@
     background-color: #337ab7;
     color:white;
 }
+.list-group-item{
+    z-index:10;
+}
+
+.list-group{
+    min-height: 300px;
+    background-color: #eee;
+    border: thin solid #ddd;
+    box-sizing: border-box;    
+    border-radius: 5px;
+}
+.col-md-3, .col-md-2 {
+        padding-right: 0;
+}

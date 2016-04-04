@@ -48,8 +48,10 @@ if (Meteor.isClient) {
   //Once the Template is rendered, run this function which
   //  sets up JQuery UI's sortable functionality
   Template.body.rendered = function() {
-    this.$('#items').sortable({
-        stop: function(e, ui) {
+    
+      this.$('#items4, #items2, #items3, #items4, #items5').sortable({
+          connectWith: '.connected',
+          stop: function(e, ui) {
           // get the dragged html element and the one before
           //   and after it
           el = ui.item.get(0)
@@ -79,6 +81,9 @@ if (Meteor.isClient) {
           Tasks.update({_id: Blaze.getData(el)._id}, {$set: {createdAt: newcreatedAt}})
         }
     })
+    this.$('.item').draggable({
+        containment: $('.list-group').parent().parent()
+    });        
   }
 }
 
